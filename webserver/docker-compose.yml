@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  webserver:
+    build: .
+    image: "${SID}/${NAME}_i"
+    networks:
+      - "5579496/csvs_dbserver_net"
+    ports:
+      - "80:80"
+    container_name: "${SID}_${NAME}_c"
+
+networks:
+  5579496/csvs_dbserver_net:
+    external: true

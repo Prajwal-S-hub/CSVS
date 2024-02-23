@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  dbserver:
+    build: .
+    image: "u5579496/csvs_dbserver_i"
+    networks:
+      - "u5579496/csvs_dbserver_net"
+    hostname: db.cyber23.test
+    privileged: true
+    environment:
+      MYSQL_ROOT_PASSWORD: "CorrectHorseBatteryStaple"
+      MYSQL_DATABASE: "csvs23db"
+      MYSQL_USER: "wwwclient23"
+      MYSQL_PASSWORD: "wwwclient23Creds"
+    container_name: "u5579496_csvs_dbserver_c"
+    volumes:
+      - ./dbdata:/var/lib/mysql
+
+networks:
+  u5579496/csvs_dbserver_net:
+    external: true
+  
